@@ -1,0 +1,771 @@
+/* =========================================================
+   POINT DE RUPTURE - style.css
+   Kevin, dernière modif le 14 juin
+
+   Version ORDINATEUR : terminée, validée par la cliente.
+   Version téléphone / tablette : pas eu le temps...
+   Désolé à celui ou celle qui reprend. Bon courage !
+   ========================================================= */
+
+
+/* 1. *************** BASE ****************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Archivo", Arial, sans-serif;
+    color: #f4f1ff;
+    background-color: #14112b;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+h1, h2, h3 {
+    font-family: "Anton", Impact, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 48px;
+    margin-bottom: 32px;
+}
+
+.section {
+    padding: 80px 5vw;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ffd23f;
+    color: #14112b;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+
+/* 2. *************** BANDEAU PROMO ****************/
+.bandeau-promo {
+    background-color: #ff3e8a;
+    text-align: center;
+    padding: 8px 16px;
+    font-weight: 600;
+}
+
+
+/* 3. *************** HEADER ****************/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 5vw;
+}
+
+.logo img {
+    width: 170px;
+}
+
+.nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.actif {
+    color: #ffd23f;
+}
+
+.btn-header {
+    background-color: #ffd23f;
+    color: #14112b;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+
+/* 4. *************** HÉRO ****************/
+/* Kevin : le dégradé sombre par-dessus la photo rend le texte lisible */
+.hero {
+    height: 85vh; /* T03 : 85 % de la hauteur de l'écran (avant : 700px) */
+    display: flex;
+    align-items: flex-end;
+    padding: 0 5vw;
+    padding-bottom: 80px;
+    background-image: linear-gradient(rgba(20, 17, 43, 0.3), rgba(20, 17, 43, 0.85)), url("../images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-dates {
+    color: #ffd23f;
+    font-weight: 800;
+    font-size: 19px;
+}
+
+.hero h1 {
+    font-size: 120px;
+    text-transform: uppercase;
+}
+
+.hero-slogan {
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+
+
+/* 5. *************** CHIFFRES ****************/
+.chiffres {
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 5vw;
+    background-color: #ffd23f;
+    color: #14112b;
+}
+
+.chiffre {
+    width: 23%;
+    text-align: center;
+}
+
+.chiffre strong {
+    display: block;
+    font-family: "Anton", Impact, sans-serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.1;
+}
+
+.chiffre span {
+    font-weight: 600;
+}
+
+
+/* 6. *************** TÊTES D'AFFICHE ****************/
+.artistes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.artiste {
+    position: relative; /* T20 : sert de repère pour placer le nom sur la photo */
+    width: 23%;
+}
+
+.artiste img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    filter: brightness(0.6); /* T20 : photo assombrie pour bien lire le nom */
+}
+
+.artiste h3 {
+    font-size: 29px;
+    position: absolute; /* T20 : le nom passe par-dessus la photo */
+    top: 270px; /* T20 : la photo fait 320px de haut, le nom se met en bas */
+    left: 16px; /* T20 : à gauche */
+}
+
+/* T21 : le badge rose "Nouveau" en haut à droite de la photo */
+.badge-nouveau {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    background-color: #ff3e8a;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.artiste p {
+    color: #b9b3d9;
+}
+
+.lien-programme {
+    font-weight: 800;
+    color: #ffd23f;
+}
+
+
+/* 7. *************** L'ESPRIT DU FESTIVAL ****************/
+#esprit {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    background-color: #1f1a40;
+}
+
+.esprit-texte {
+    width: 45%;
+}
+
+.esprit-texte p {
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+/* Kevin : l'image a pile la bonne taille sur mon écran */
+.esprit-image {
+    width: 50%; /* T07 : unité relative à la place de 560px */
+    border-radius: 16px;
+}
+
+
+/* 8. *************** PARTENAIRES ****************/
+.logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logos img {
+    width: 14%;
+}
+
+
+/* 9. *************** FOOTER ****************/
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    padding: 64px 5vw;
+    background-color: #0b0920;
+}
+
+.footer-col {
+    width: 30%;
+}
+
+.footer-col img {
+    width: 150px;
+    margin-bottom: 16px;
+}
+
+.footer h4 {
+    color: #ffd23f;
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+/* T18 : les icônes des réseaux côte à côte, en 28px */
+.reseaux {
+    display: flex;
+    gap: 20px;
+    font-size: 28px;
+}
+
+/* T18 : les icônes jaunes des infos pratiques */
+.icone-info {
+    color: #ffd23f;
+    width: 20px;
+}
+
+
+/* 10. *************** BARRE MOBILE ****************/
+/* Kevin : la cliente veut un bouton "Acheter mon pass" collé en bas de
+   l'écran, mais SEULEMENT sur téléphone. Il est dans le HTML de chaque
+   page, caché pour l'instant. TODO */
+.barre-mobile {
+    display: none;
+    background-color: #ffd23f;
+    color: #14112b;
+    text-align: center;
+    font-weight: 800;
+    padding: 16px;
+    text-decoration: none;
+}
+
+
+/* 11. *************** PAGES INTÉRIEURES ****************/
+.page-titre {
+    padding: 64px 5vw;
+    padding-bottom: 32px;
+}
+
+.page-titre h1 {
+    font-size: 80px;
+    text-transform: uppercase;
+}
+
+.page-titre p {
+    font-size: 19px;
+    color: #b9b3d9;
+}
+
+
+/* 12. *************** PROGRAMME ****************/
+.jours {
+    position: sticky; /* T11 : les onglets restent collés en haut */
+    top: 0; /* T11 */
+    z-index: 10; /* T11 : les concerts passent dessous */
+    display: flex;
+    gap: 16px;
+    padding: 16px 5vw;
+    background-color: #14112b;
+    border-bottom: 1px solid #2e2858;
+}
+
+.jours a {
+    white-space: nowrap; /* Kevin : le texte des onglets ne passe jamais à la ligne */
+    padding: 8px 20px;
+    border: 2px solid #ffd23f;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.programme {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    padding: 32px 5vw;
+    padding-bottom: 80px;
+}
+
+.scenes {
+    width: 260px;
+    flex-shrink: 0;
+    background-color: #1f1a40;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.scenes h3 {
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+
+.scenes p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.scenes-info {
+    color: #b9b3d9;
+    font-size: 14px;
+    padding-top: 16px;
+}
+
+.pastille-grande,
+.pastille-chapiteau,
+.pastille-lac {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.pastille-grande {
+    background-color: #ff3e8a;
+}
+
+.pastille-chapiteau {
+    background-color: #ffd23f;
+}
+
+.pastille-lac {
+    background-color: #3ee0c5;
+}
+
+.concerts {
+    width: 100%;
+}
+
+.concerts h2 {
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+#samedi,
+#dimanche {
+    margin-top: 40px;
+}
+
+.concert {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background-color: #1f1a40;
+    border-radius: 12px;
+}
+
+.heure {
+    width: 80px;
+    flex-shrink: 0;
+    font-family: "Anton", Impact, sans-serif;
+    font-size: 24px;
+    color: #ffd23f;
+}
+
+.nom {
+    width: 100%;
+    font-size: 22px;
+}
+
+.style {
+    width: 110px;
+    flex-shrink: 0;
+    color: #b9b3d9;
+}
+
+.scene-grande,
+.scene-chapiteau,
+.scene-lac {
+    width: 130px;
+    flex-shrink: 0;
+    padding: 5px 12px;
+    border-radius: 999px;
+    color: #14112b;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.scene-grande {
+    background-color: #ff3e8a;
+}
+
+.scene-chapiteau {
+    background-color: #ffd23f;
+}
+
+.scene-lac {
+    background-color: #3ee0c5;
+}
+
+
+/* 13. *************** BILLETTERIE ****************/
+.tarifs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.tarif {
+    position: relative;
+    width: 31%;
+    padding: 40px 32px;
+    background-color: #1f1a40;
+    border-radius: 20px;
+}
+
+#tarif-vedette {
+    border: 3px solid #ffd23f;
+}
+
+.badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 16px;
+    background-color: #ff3e8a;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.tarif h3 {
+    font-size: 32px;
+}
+
+.prix {
+    font-family: "Anton", Impact, sans-serif;
+    font-size: 56px;
+    color: #ffd23f;
+    margin-bottom: 16px;
+}
+
+.tarif ul {
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.tarif li {
+    padding: 6px 0;
+    border-bottom: 1px solid #2e2858;
+}
+
+.questions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.question {
+    width: 48%;
+    margin-bottom: 32px;
+}
+
+.question h3 {
+    font-family: "Archivo", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: 0;
+    color: #ffd23f;
+    margin-bottom: 6px;
+}
+
+
+/* 15. *************** RETOUR EN HAUT ****************/
+/* (placée avant le responsive, car les media queries vont à la fin) */
+/* T22 : bouton rond rose, toujours visible en bas à droite */
+.retour-haut {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff3e8a;
+    border-radius: 50%;
+    font-size: 22px;
+    text-decoration: none;
+    z-index: 30;
+}
+
+
+/* 14. *************** RESPONSIVE ****************/
+
+/* Ordre des media queries : de la plus grande à la plus petite
+   (sinon la règle tablette écrase la règle téléphone) */
+
+/*  PETIT PORTABLE : 1024px et moins  */
+@media (max-width: 1024px) {
+
+    /* T06 : deux artistes par ligne */
+    .artistes {
+        flex-wrap: wrap;
+    }
+
+    .artiste {
+        width: 48%;
+        margin-bottom: 32px;
+    }
+}
+
+/*  TABLETTE : 768px et moins  */
+@media (max-width: 768px) {
+
+    /* T04 : le logo passe au-dessus du menu, tout est centré */
+    .header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* T05 : deux chiffres par ligne */
+    .chiffres {
+        flex-wrap: wrap;
+        row-gap: 24px;
+    }
+
+    .chiffre {
+        width: 48%;
+    }
+
+    /* T07 : la photo au-dessus du texte */
+    #esprit {
+        flex-direction: column-reverse;
+        gap: 32px;
+    }
+
+    .esprit-texte {
+        width: 100%;
+    }
+
+    .esprit-image {
+        width: 100%;
+    }
+
+    /* T08 : trois logos par ligne */
+    .logos {
+        flex-wrap: wrap;
+        row-gap: 24px;
+    }
+
+    .logos img {
+        width: 30%;
+    }
+
+    /* T09 : les colonnes du footer l'une sous l'autre, centrées */
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-col {
+        width: 100%;
+    }
+
+    .footer-col img {
+        margin-left: auto; /* T09 : le logo est une image, il faut des marges auto */
+        margin-right: auto;
+    }
+
+    /* T18 : les icônes des réseaux centrées */
+    .reseaux {
+        justify-content: center;
+    }
+
+    /* T12 : on cache la légende des scènes */
+    .scenes {
+        display: none;
+    }
+
+    /* T13 : un tarif par ligne, centré, 60 % de la largeur */
+    .tarifs {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .tarif {
+        width: 60%;
+    }
+
+    /* T14 : les questions sur une seule colonne */
+    .question {
+        width: 100%;
+    }
+}
+
+/*  TÉLÉPHONE : 480px et moins  */
+@media (max-width: 480px) {
+
+    /* T02 : Kevin avait oublié le "px" dans la condition (480 au lieu de 480px) */
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    /* T03 : héro à 75 % de la hauteur de l'écran */
+    .hero {
+        height: 75vh;
+    }
+
+    /* T04 : le bouton jaune du header disparaît */
+    .btn-header {
+        display: none;
+    }
+
+    /* T06 : un artiste par ligne
+       T19 : remplacé par un slider, les artistes restent sur une seule ligne
+       et on les fait défiler horizontalement */
+    .artistes {
+        flex-wrap: nowrap;
+        gap: 16px;
+        overflow-x: auto; /* T19 : seul le slider défile sur le côté */
+        scroll-snap-type: x mandatory; /* T19 : le slider s'arrête sur chaque artiste */
+    }
+
+    .artiste {
+        width: 80%; /* T19 : 80 % pour voir le bord de l'artiste suivant */
+        flex-shrink: 0; /* T19 : les artistes ne se tassent pas */
+        scroll-snap-align: start;
+    }
+
+    /* T08 : deux logos par ligne */
+    .logos img {
+        width: 45%;
+    }
+
+    /* T10 : la barre "Acheter mon pass" collée en bas de l'écran */
+    .barre-mobile {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 20;
+    }
+
+    /* T10 : de la place en bas de la page pour ne pas cacher le footer */
+    body {
+        padding-bottom: 60px;
+    }
+
+    /* T22 : le bouton remonte juste au-dessus de la barre jaune */
+    .retour-haut {
+        bottom: 80px;
+    }
+
+    /* T12 : les infos de chaque concert les unes sous les autres */
+    .concert {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* T13 : chaque tarif prend toute la largeur */
+    .tarif {
+        width: 100%;
+    }
+
+    /* T16 : le menu dépassait à 320px */
+    .nav {
+        gap: 20px;
+    }
+
+    /* T16 : les titres des pages programme et billetterie dépassaient */
+    .page-titre h1 {
+        font-size: 48px;
+    }
+
+    /* T16 : les onglets des jours dépassaient, ils passent à la ligne */
+    .jours {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .jours a {
+        padding: 6px 12px;
+    }
+
+    /* T16 : "25 000" dépassait de sa case */
+    .chiffre strong {
+        font-size: 40px;
+    }
+}
+
+/*  GRAND ÉCRAN : 1440px et plus  */
+@media (min-width: 1440px) {
+
+    /* T15 : 12vw de marge sur les côtés au lieu de 5vw */
+    .section,.header,.hero,.chiffres,.footer,.page-titre,.jours,.programme {
+        padding-left: 12vw;
+        padding-right: 12vw;
+    }
+}

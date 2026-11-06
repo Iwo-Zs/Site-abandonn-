@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 788 4294" width="788" height="4294">
+<rect x="-10" y="-10" width="788" height="4294" fill="#fdfcf7"/>
+<path d="M-0.2,-0.8 Q382.9,0.2 767.0,-1.6 M770.6,1.8 Q765.0,2137.4 766.0,4272.9 M770.7,4275.6 Q384.3,4272.2 0.1,4275.4 M-2.6,4276.4 Q3.0,2136.6 3.0,-1.3 " fill="none" stroke="#2b2b2b" stroke-width="2.5"/>
+<path d="M3.0,3.9 Q383.5,1.7 767.3,2.2 M765.0,1.0 Q767.7,19.6 764.5,38.7 M765.9,40.9 Q385.6,39.5 2.7,37.5 M0.2,41.1 Q3.0,18.7 2.3,2.1 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="7" y="18" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Bandeau promo</text>
+<path d="M302.1,61.5 Q381.9,62.3 466.9,63.8 M466.5,60.6 Q466.9,84.2 468.4,105.4 M467.8,106.1 Q382.8,102.7 302.4,103.4 M301.6,106.2 Q301.9,85.0 303.1,61.6 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M303,65 L465,102 M465,65 L303,102" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="306" y="79" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M236.4,125.5 Q382.5,123.0 533.1,125.1 M529.4,125.1 Q533.3,133.5 530.7,144.2 M530.2,144.2 Q385.6,145.9 236.7,147.9 M235.3,145.0 Q234.7,133.2 238.4,123.8 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="242" y="140" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Menu</text>
+<path d="M287.4,165.4 Q381.9,164.9 478.7,164.8 M482.3,165.0 Q478.4,189.6 478.6,216.7 M480.7,215.1 Q382.7,216.5 286.3,217.3 M286.7,216.1 Q288.5,192.2 287.9,164.2 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="293" y="182" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Bouton</text>
+<path d="M2.2,240.3 Q385.5,238.1 765.3,238.6 M764.1,240.5 Q764.9,670.3 767.9,1107.6 M767.7,1104.8 Q382.2,1104.5 1.2,1104.7 M1.4,1105.5 Q1.8,674.3 3.8,241.0 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M4,241 L764,1104 M764,241 L4,1104" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="7" y="255" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Héro (grande photo)</text>
+<path d="M41.4,706.0 Q383.6,704.7 726.7,708.3 M729.0,709.0 Q729.1,804.1 729.4,901.3 M728.1,898.9 Q383.3,902.0 42.6,899.4 M40.5,899.5 Q42.1,802.9 40.5,705.5 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="723" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Titre</text>
+<path d="M39.4,974.1 Q139.6,975.7 234.0,973.9 M235.3,973.6 Q233.5,1002.1 236.5,1025.6 M235.1,1024.2 Q137.3,1027.2 42.2,1027.5 M42.5,1024.7 Q39.9,1000.7 38.9,974.9 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="991" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Bouton</text>
+<path d="M38.4,1159.0 Q203.2,1157.8 369.0,1158.9 M366.4,1157.1 Q366.7,1201.4 369.1,1242.9 M366.0,1242.5 Q202.2,1240.7 40.0,1242.5 M38.5,1241.8 Q41.9,1199.3 41.6,1159.4 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="1174" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Chiffre</text>
+<path d="M401.0,1159.4 Q565.0,1159.5 726.1,1155.5 M726.8,1157.6 Q725.7,1201.3 728.4,1240.9 M727.7,1239.7 Q563.1,1241.6 400.7,1241.7 M399.0,1239.1 Q399.5,1201.0 399.0,1155.5 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="405" y="1174" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Chiffre</text>
+<path d="M38.5,1269.7 Q204.8,1267.6 368.6,1267.8 M368.6,1267.4 Q367.5,1309.2 367.8,1351.4 M367.6,1352.9 Q203.8,1351.5 39.7,1353.4 M41.6,1350.2 Q39.2,1312.2 41.6,1270.6 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="1285" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Chiffre</text>
+<path d="M397.8,1270.3 Q565.1,1271.0 727.3,1268.2 M729.3,1269.2 Q726.8,1308.6 727.6,1350.5 M729.7,1351.4 Q562.8,1352.1 397.7,1353.1 M401.3,1353.6 Q397.7,1308.9 399.7,1268.7 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="405" y="1285" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Chiffre</text>
+<path d="M41.2,1458.3 Q382.4,1461.2 727.0,1458.4 M727.7,1459.4 Q729.2,1477.3 727.0,1500.3 M726.3,1499.3 Q381.9,1498.9 39.0,1500.3 M39.4,1496.5 Q40.8,1477.2 38.3,1458.6 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="1476" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Titre</text>
+<path d="M38.8,1533.1 Q203.1,1534.3 370.3,1534.0 M366.0,1534.4 Q369.1,1692.0 366.4,1851.9 M368.6,1850.7 Q205.8,1850.1 41.7,1848.7 M41.1,1852.3 Q42.2,1690.7 40.3,1532.2 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M42,1536 L366,1848 M366,1536 L42,1848" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="45" y="1550" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Photo</text>
+<path d="M402.0,1533.1 Q563.2,1534.0 729.7,1533.9 M727.1,1534.3 Q728.5,1692.6 727.7,1851.1 M726.8,1849.8 Q565.4,1851.4 397.8,1850.1 M400.5,1850.9 Q398.1,1691.0 399.6,1532.1 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M402,1536 L726,1848 M726,1536 L402,1848" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="405" y="1550" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Photo</text>
+<path d="M42.5,1966.5 Q202.8,1967.3 367.8,1967.1 M370.1,1968.6 Q366.2,2126.1 370.3,2285.4 M366.4,2285.2 Q206.4,2284.2 40.3,2282.0 M40.3,2283.3 Q39.8,2123.9 39.2,1967.3 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M42,1970 L366,2282 M366,1970 L42,2282" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="45" y="1984" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Photo</text>
+<path d="M398.1,1965.4 Q564.7,1966.5 729.0,1968.4 M727.9,1969.5 Q727.8,2123.7 725.5,2284.7 M725.4,2282.2 Q562.2,2283.2 400.2,2282.6 M400.2,2283.3 Q398.9,2126.7 401.5,1966.0 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M402,1970 L726,2282 M726,1970 L402,2282" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="405" y="1984" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Photo</text>
+<path d="M38.8,1870.5 Q202.7,1868.3 366.4,1869.2 M368.5,1871.2 Q369.7,1883.1 369.9,1897.3 M367.5,1899.5 Q204.4,1896.8 41.2,1896.1 M41.6,1898.9 Q38.4,1883.4 41.4,1872.5 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="1886" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Nom</text>
+<path d="M398.3,1872.5 Q564.8,1870.6 728.7,1869.2 M726.8,1869.2 Q726.3,1882.6 728.0,1897.9 M728.4,1898.5 Q565.3,1899.6 401.2,1900.1 M398.7,1897.2 Q399.7,1885.8 398.1,1870.0 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="405" y="1886" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Nom</text>
+<path d="M41.1,2304.7 Q205.3,2304.0 369.5,2304.6 M370.0,2301.6 Q367.1,2318.5 369.3,2330.4 M370.2,2331.0 Q204.3,2329.9 39.6,2329.3 M38.7,2330.9 Q42.0,2317.7 42.0,2301.7 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="2320" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Nom</text>
+<path d="M399.8,2301.9 Q562.2,2305.4 728.4,2303.6 M728.6,2302.4 Q729.7,2316.4 726.7,2331.3 M728.0,2331.9 Q565.7,2329.2 399.9,2332.6 M400.5,2332.8 Q401.4,2318.8 400.4,2304.1 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="405" y="2320" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Nom</text>
+<path d="M38.2,3055.3 Q383.3,3056.3 727.2,3055.7 M728.2,3055.6 Q729.6,3072.1 726.0,3093.5 M727.4,3091.0 Q384.7,3092.0 38.5,3091.6 M40.0,3092.7 Q38.3,3073.1 38.9,3053.6 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="3070" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Titre</text>
+<path d="M41.3,3130.6 Q383.5,3128.6 728.4,3126.6 M725.5,3127.8 Q728.0,3168.5 725.8,3210.3 M728.5,3207.5 Q383.0,3210.7 39.3,3209.6 M40.0,3208.3 Q39.7,3170.9 41.0,3128.0 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="3144" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Texte</text>
+<path d="M42.1,3228.2 Q386.2,3227.3 727.3,3230.8 M729.6,3230.4 Q728.7,3267.2 729.4,3307.1 M729.4,3310.8 Q383.8,3308.0 38.6,3308.9 M41.9,3308.7 Q39.0,3267.0 42.3,3229.3 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="3245" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Texte</text>
+<path d="M39.3,2537.1 Q382.5,2540.2 726.9,2538.0 M726.7,2539.8 Q729.2,2780.3 727.8,3017.0 M728.0,3019.2 Q382.9,3019.0 38.4,3019.4 M39.4,3019.1 Q41.1,2776.8 42.3,2540.5 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M42,2540 L726,3016 M726,2540 L42,3016" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="45" y="2554" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Photo</text>
+<path d="M38.3,3440.5 Q383.8,3443.2 728.4,3443.1 M729.3,3441.9 Q726.0,3462.5 728.2,3477.4 M729.0,3479.4 Q382.1,3480.2 38.4,3480.9 M39.6,3481.5 Q38.2,3462.6 41.6,3440.4 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="3457" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Titre</text>
+<path d="M41.5,3514.7 Q140.1,3516.7 242.6,3514.3 M244.8,3513.5 Q242.1,3546.9 243.5,3581.7 M244.9,3582.6 Q140.7,3581.0 38.2,3578.7 M39.7,3581.2 Q38.6,3547.1 41.5,3516.8 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M42,3518 L242,3579 M242,3518 L42,3579" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="45" y="3532" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M281.5,3516.5 Q383.6,3516.3 487.5,3514.8 M485.7,3516.0 Q486.6,3548.5 486.6,3579.5 M485.3,3578.6 Q385.5,3580.3 281.0,3580.8 M282.3,3578.5 Q282.1,3549.9 281.8,3515.5 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M284,3518 L484,3579 M484,3518 L284,3579" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="287" y="3532" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M523.4,3516.1 Q625.2,3517.3 728.7,3515.7 M728.0,3515.4 Q729.4,3549.9 725.8,3580.8 M726.4,3581.1 Q627.9,3581.8 524.4,3582.4 M524.2,3582.5 Q525.9,3548.8 523.9,3515.8 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M526,3518 L726,3579 M726,3518 L526,3579" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="529" y="3532" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M39.5,3609.8 Q143.5,3609.4 245.1,3610.8 M245.3,3609.2 Q242.0,3639.0 241.7,3673.6 M243.8,3675.6 Q143.4,3674.1 40.5,3672.9 M40.1,3672.2 Q39.1,3641.3 41.6,3607.9 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M42,3611 L242,3672 M242,3611 L42,3672" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="45" y="3625" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M283.7,3607.7 Q382.3,3610.7 486.3,3608.0 M484.7,3610.0 Q486.8,3639.6 485.1,3672.6 M485.6,3674.3 Q382.6,3673.8 281.3,3674.9 M282.7,3673.7 Q281.6,3640.4 282.3,3610.7 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M284,3611 L484,3672 M484,3611 L284,3672" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="287" y="3625" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M522.4,3607.2 Q627.5,3607.9 729.8,3609.6 M728.6,3609.7 Q725.7,3643.1 727.3,3674.6 M727.6,3671.6 Q625.4,3675.4 525.5,3671.6 M524.1,3675.0 Q523.9,3641.1 524.6,3607.5 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<path d="M526,3611 L726,3672 M726,3611 L526,3672" stroke="#9a9a9a" stroke-width="1.2"/>
+<text x="529" y="3625" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Logo</text>
+<path d="M38.3,3799.5 Q384.3,3795.7 729.0,3797.7 M727.0,3795.9 Q726.8,3836.6 728.4,3875.0 M728.5,3874.1 Q384.0,3875.5 40.4,3875.4 M40.3,3876.2 Q40.4,3835.3 38.5,3798.8 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="3814" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Colonne du footer</text>
+<path d="M38.5,3910.2 Q385.9,3913.1 727.7,3910.7 M727.7,3909.4 Q726.3,3974.6 725.6,4040.8 M728.6,4040.8 Q386.2,4042.9 38.2,4041.8 M39.2,4043.1 Q40.8,3975.3 40.1,3909.2 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="3927" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Colonne du footer</text>
+<path d="M39.5,4075.8 Q386.0,4079.8 727.1,4077.8 M727.0,4078.6 Q729.6,4141.2 726.6,4207.9 M726.3,4209.0 Q385.7,4207.9 42.3,4207.6 M38.6,4208.4 Q41.1,4141.2 40.8,4078.2 " fill="none" stroke="#3a3a3a" stroke-width="1.8"/>
+<text x="45" y="4094" font-family="Comic Sans MS, Chalkboard SE, Segoe Print, cursive" font-size="13" fill="#1d4ed8">Colonne du footer</text>
+</svg>

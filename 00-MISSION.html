@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission : le site abandonné du festival Point de rupture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --papier: #f6f4ee;
+    --blanc: #ffffff;
+    --encre: #1c1a2e;
+    --gris: #5d5a72;
+    --ligne: #dcd8cc;
+    --rose: #e8306f;
+    --jaune: #ffd23f;
+    --nuit: #14112b;
+    --vert: #138a5b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--papier);
+    color: var(--encre);
+    font: 400 17px/1.6 "Archivo", Arial, sans-serif;
+  }
+  a { color: var(--rose); }
+  code {
+    font: 0.86em Consolas, "Courier New", monospace;
+    background: #ebe7dc;
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  h1, h2 { font-family: "Anton", Impact, sans-serif; font-weight: 400; letter-spacing: 0.01em; line-height: 1.1; }
+
+  /* En-tête */
+  .une {
+    background: var(--nuit);
+    color: #f4f1ff;
+    padding: 48px 6vw 40px;
+  }
+  .une p.tampon {
+    display: inline-block;
+    margin: 0 0 18px;
+    padding: 4px 12px;
+    border: 2px solid var(--jaune);
+    color: var(--jaune);
+    font-weight: 800;
+    transform: rotate(-2deg);
+  }
+  .une h1 { margin: 0 0 12px; font-size: clamp(40px, 6vw, 76px); text-transform: uppercase; max-width: 16ch; }
+  .une .chapo { margin: 0; max-width: 62ch; font-size: 19px; color: #d8d3f2; }
+  nav.sommaire {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    padding: 12px 6vw;
+    background: var(--blanc);
+    border-bottom: 1px solid var(--ligne);
+  }
+  nav.sommaire a { color: var(--encre); font-weight: 700; text-decoration: none; }
+  nav.sommaire a:hover { color: var(--rose); }
+
+  main { max-width: 980px; margin: 0 auto; padding: 0 5vw 80px; }
+  section { padding-top: 56px; }
+  section > h2 { font-size: 40px; margin: 0 0 18px; }
+  .num { color: var(--rose); margin-right: 10px; }
+
+  /* Mot de Kevin : un post-it */
+  .postit {
+    max-width: 640px;
+    background: #fff4a8;
+    padding: 26px 30px;
+    box-shadow: 0 10px 24px rgba(60, 50, 0, 0.18);
+    transform: rotate(-0.8deg);
+    font-size: 18px;
+  }
+  .postit p { margin: 0 0 12px; }
+  .postit .signature { font-weight: 800; margin: 0; }
+
+  /* Mail */
+  .mail { background: var(--blanc); border: 1px solid var(--ligne); border-radius: 12px; overflow: hidden; }
+  .mail-entete { padding: 16px 22px; border-bottom: 1px solid var(--ligne); background: #fbfaf7; font-size: 15px; }
+  .mail-entete div { display: grid; grid-template-columns: 70px 1fr; }
+  .mail-entete b { color: var(--gris); font-weight: 600; }
+  .mail-objet { font-weight: 800; font-size: 17px; }
+  .mail-corps { padding: 20px 22px 24px; }
+  .mail-corps p { margin: 0 0 12px; }
+  .mail-corps ul { margin: 0 0 14px; padding-left: 22px; }
+  .pj { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; }
+  .pj figure { margin: 0; width: 180px; }
+  .pj img { width: 100%; display: block; border: 6px solid #111; border-radius: 22px; }
+  .pj figcaption { font-size: 13px; color: var(--gris); margin-top: 4px; text-align: center; }
+
+  /* Cahier des charges */
+  .tableau { overflow-x: auto; margin-bottom: 20px; }
+  table { border-collapse: collapse; width: 100%; background: var(--blanc); min-width: 560px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+  th { background: var(--nuit); color: #fff; font-weight: 700; }
+  ol.regles { padding-left: 24px; }
+  ol.regles li { margin-bottom: 8px; }
+
+  /* Tickets */
+  .score {
+    position: sticky;
+    top: 50px;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    background: var(--nuit);
+    color: #fff;
+    border-radius: 12px;
+  }
+  .score strong { font-family: "Anton", Impact, sans-serif; font-weight: 400; font-size: 28px; color: var(--jaune); }
+  .jauge { flex: 1; min-width: 160px; height: 10px; background: #3a3462; border-radius: 99px; overflow: hidden; }
+  .jauge span { display: block; height: 100%; width: 0; background: var(--jaune); transition: width 0.3s; }
+  .legende-tickets { color: var(--gris); font-size: 15px; margin: 0 0 16px; }
+  .tickets { display: grid; gap: 14px; }
+  .ticket {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    background: var(--blanc);
+    border: 1px solid var(--ligne);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ticket .talon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 12px 6px;
+    background: #efece3;
+    border-right: 2px dashed var(--ligne);
+    text-align: center;
+  }
+  .talon .id { font-family: "Anton", Impact, sans-serif; font-size: 26px; line-height: 1; }
+  .talon .pts { font-weight: 800; font-size: 14px; }
+  .ticket .contenu { padding: 14px 18px 16px; }
+  .ticket h3 { margin: 0 0 6px; font-size: 19px; }
+  .etiquettes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .etiquette { font-size: 12.5px; font-weight: 700; padding: 2px 9px; border-radius: 99px; background: #efece3; }
+  .etiquette.bug { background: #fde0ea; color: #a3164a; }
+  .etiquette.facile { background: #dff3e8; color: #106a45; }
+  .etiquette.moyen { background: #fff1c2; color: #7a5a00; }
+  .etiquette.difficile { background: #fde0ea; color: #a3164a; }
+  .etiquette.bonus { background: var(--nuit); color: var(--jaune); }
+  .ticket p { margin: 0 0 8px; }
+  .ticket ul { margin: 0 0 8px; padding-left: 20px; }
+  .valide { font-size: 15px; color: var(--gris); }
+  .valide b { color: var(--encre); }
+  .fait { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font-weight: 700; cursor: pointer; }
+  .fait input { width: 20px; height: 20px; accent-color: var(--vert); }
+  .ticket.termine { border-color: var(--vert); }
+  .ticket.termine .talon { background: #dff3e8; }
+
+  /* Croquis */
+  .croquis { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px; }
+  .croquis a { display: block; text-decoration: none; color: var(--encre); }
+  .croquis .vignette { height: 300px; overflow: hidden; background: #fdfcf7; border: 1px solid var(--ligne); border-radius: 8px; }
+  .croquis img { width: 100%; display: block; }
+  .croquis span { display: block; font-weight: 700; font-size: 14px; margin-top: 6px; }
+
+  /* Étapes de test */
+  .etapes { counter-reset: e; list-style: none; padding: 0; }
+  .etapes li { counter-increment: e; position: relative; padding-left: 46px; margin-bottom: 14px; }
+  .etapes li::before {
+    content: counter(e);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--jaune);
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+  }
+
+  /* Lot 2 */
+  .lot2 {
+    position: relative;
+    margin-top: 10px;
+    padding: 28px;
+    border: 2px dashed #b9b3a0;
+    border-radius: 14px;
+    background: repeating-linear-gradient(-45deg, #f0ede4, #f0ede4 12px, #ebe7dc 12px, #ebe7dc 24px);
+  }
+  .lot2 .flou { display: grid; gap: 10px; filter: blur(5px); user-select: none; pointer-events: none; }
+  .lot2 .flou div { height: 54px; background: var(--blanc); border-radius: 10px; }
+  .lot2 .cadenas {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  .lot2 .cadenas .bulle { margin: 0; max-width: 46ch; background: var(--nuit); color: #fff; padding: 16px 22px; border-radius: 12px; }
+  .lot2 .cadenas .bulle strong { color: var(--jaune); font-family: "Anton", Impact, sans-serif; font-weight: 400; font-size: 24px; display: block; }
+
+  .lot2-form { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+  .lot2-form input { font: inherit; padding: 8px 12px; border-radius: 8px; border: 0; width: 180px; text-transform: uppercase; }
+  .lot2-form button { font: inherit; font-weight: 800; padding: 8px 16px; border-radius: 8px; border: 0; background: var(--jaune); color: var(--nuit); cursor: pointer; }
+  .lot2-erreur { display: block; margin-top: 8px; color: var(--jaune); font-size: 14px; }
+
+  @media (max-width: 600px) {
+    .ticket { grid-template-columns: 1fr; }
+    .ticket .talon { flex-direction: row; gap: 12px; border-right: 0; border-bottom: 2px dashed var(--ligne); }
+    .score { top: 88px; }
+  }
+  @media print {
+    nav.sommaire, .score { position: static; }
+    .ticket { break-inside: avoid; }
+    .une { background: #fff; color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<header class="une">
+  <p class="tampon">Agence Bascule, dossier de reprise</p>
+  <h1>Le site abandonné</h1>
+  <p class="chapo">Kevin, développeur de l’agence, est parti du jour au lendemain. Il a laissé le site du festival Point de rupture terminé sur ordinateur… et inutilisable sur téléphone. La cliente présente son site à ses partenaires vendredi. À toi de le reprendre.</p>
+</header>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <a href="#kevin">Le mot de Kevin</a>
+  <a href="#mail">Le mail de la cliente</a>
+  <a href="#cahier">Le cahier des charges</a>
+  <a href="#tickets">Les tickets</a>
+  <a href="#croquis">Les croquis</a>
+  <a href="#tester">Tester son travail</a>
+</nav>
+
+<main>
+
+  <!-- 1. KEVIN -->
+  <section id="kevin">
+    <h2><span class="num">1</span>Le mot de Kevin</h2>
+    <div class="postit">
+      <p>Salut ! Désolé de partir comme ça, j’ai eu une proposition de dernière minute.</p>
+      <p>Le site du festival est fini sur ordinateur, la cliente l’a validé. Par contre, je n’ai pas eu le temps de faire le responsive.</p>
+      <p>Tout est dans le dossier <code>site/</code> : trois pages (<code>index.html</code>, <code>programme.html</code>, <code>billetterie.html</code>) et un seul fichier <code>css/style.css</code>. J’ai laissé des commentaires TODO dedans.</p>
+      <p>J’ai commencé une media query pour le téléphone, mais elle ne marche pas et je n’ai pas compris pourquoi.</p>
+      <p>La maquette mobile, je l’ai perdue (crash de disque…). Il me reste mes croquis, je les ai scannés dans <code>mission/croquis</code>. Ils sont moches mais justes.</p>
+      <p>Ne touche pas au HTML, sauf si c’est vraiment nécessaire. Bon courage !</p>
+      <p class="signature">Kevin</p>
+    </div>
+  </section>
+
+  <!-- 2. MAIL -->
+  <section id="mail">
+    <h2><span class="num">2</span>Le mail de la cliente</h2>
+    <article class="mail">
+      <div class="mail-entete">
+        <div><b>De</b><span>Claire Vasseur, directrice du festival Point de rupture</span></div>
+        <div><b>À</b><span>Agence Bascule</span></div>
+        <div><b>Objet</b><span class="mail-objet">Site inutilisable sur téléphone !</span></div>
+      </div>
+      <div class="mail-corps">
+        <p>Bonjour,</p>
+        <p>J’ai ouvert notre nouveau site sur mon iPhone ce matin et c’est une catastrophe (captures jointes). Or 70 % de nos festivaliers achètent leur billet sur leur téléphone !</p>
+        <p>Voici tout ce que j’ai remarqué :</p>
+        <ul>
+          <li>sur la page d’accueil, le nom du festival sort de l’écran ;</li>
+          <li>la billetterie est toute petite, il faut zoomer pour lire quoi que ce soit ;</li>
+          <li>sur le programme, je dois faire glisser la page de gauche à droite ;</li>
+          <li>sur mon grand écran de 27 pouces, le site paraît étiré, tout est collé sur les bords ;</li>
+          <li>sur téléphone, je veux que le bouton « Acheter mon pass » soit toujours visible en bas de l’écran, comme dans les applis.</li>
+        </ul>
+        <p>Nous présentons le site à nos partenaires vendredi. Je compte sur vous.</p>
+        <p>Claire Vasseur</p>
+        <p><em>PS : si ce premier lot est prêt à temps, j’ai déjà une deuxième série de demandes pour vous. Je vous l’envoie dès que celui-ci est livré.</em></p>
+        <div class="pj">
+          <figure><a href="mission/captures/IMG_2041.png"><img src="mission/captures/IMG_2041.png" alt="Capture de l’accueil sur iPhone : le titre sort de l’écran"></a><figcaption>IMG_2041.png, l’accueil</figcaption></figure>
+          <figure><a href="mission/captures/IMG_2042.png"><img src="mission/captures/IMG_2042.png" alt="Capture de la billetterie sur iPhone : la page est minuscule"></a><figcaption>IMG_2042.png, la billetterie</figcaption></figure>
+          <figure><a href="mission/captures/IMG_2043.png"><img src="mission/captures/IMG_2043.png" alt="Capture du programme sur iPhone : la page déborde à droite"></a><figcaption>IMG_2043.png, le programme</figcaption></figure>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- 3. CAHIER DES CHARGES -->
+  <section id="cahier">
+    <h2><span class="num">3</span>Le cahier des charges</h2>
+    <p>Le site doit fonctionner sur toutes les tailles d’écran, de 320px à plus de 1440px. Utilise ces paliers, et seulement ceux-là :</p>
+    <div class="tableau">
+      <table>
+        <thead><tr><th>Appareil</th><th>Largeur d’écran</th><th>Media query à utiliser</th></tr></thead>
+        <tbody>
+          <tr><td>Téléphone</td><td>480px et moins</td><td><code>@media (max-width: 480px)</code></td></tr>
+          <tr><td>Tablette</td><td>de 481 à 768px</td><td><code>@media (max-width: 768px)</code></td></tr>
+          <tr><td>Petit portable</td><td>de 769 à 1024px</td><td><code>@media (max-width: 1024px)</code></td></tr>
+          <tr><td>Ordinateur</td><td>de 1025 à 1439px</td><td>Aucune : c’est la version de Kevin, déjà validée</td></tr>
+          <tr><td>Grand écran</td><td>1440px et plus</td><td><code>@media (min-width: 1440px)</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Les règles de l’agence</strong></p>
+    <ol class="regles">
+      <li>Aucune barre de défilement horizontale, sur aucune page, à aucune taille d’écran.</li>
+      <li>La version ordinateur a été validée par la cliente : elle ne doit pas changer.</li>
+      <li>Un seul fichier CSS pour les trois pages. Les media queries se placent à la fin, celles en <code>max-width</code> de la plus grande à la plus petite.</li>
+      <li>On ne modifie pas le HTML, sauf si un ticket l’exige.</li>
+      <li>Chaque modification est repérée par le numéro de son ticket en commentaire, par exemple <code>/* T06 */</code>. C’est comme ça que ton travail sera relu.</li>
+    </ol>
+  </section>
+
+  <!-- 4. TICKETS -->
+  <section id="tickets">
+    <h2><span class="num">4</span>Les tickets</h2>
+    <p class="legende-tickets">Chaque demande de la cliente a été découpée en tickets. Fais-les dans l’ordre que tu veux, mais commence par les bugs. Chaque ticket indique où chercher dans le code, comment tester et quand il est terminé. Coche-le seulement quand le « Validé quand » est vrai.</p>
+
+    <div class="score">
+      <span>Points :</span>
+      <strong id="points">0</strong>
+      <span>sur 26</span>
+      <div class="jauge"><span id="jauge"></span></div>
+      <span id="bonus"></span>
+    </div>
+
+    <div class="tickets" id="liste"></div>
+
+    <h3 style="margin-top:40px">Lot 2</h3>
+    <div class="lot2" id="lot2-ferme" aria-label="Lot 2, verrouillé">
+      <div class="flou" aria-hidden="true"><div></div><div></div><div></div><div></div></div>
+      <div class="cadenas">
+        <div class="bulle"><strong>Verrouillé</strong>La cliente enverra ses nouvelles demandes quand le lot 1 sera livré. Ton enseignant te donnera alors un code.
+          <form id="lot2-form" class="lot2-form">
+            <input id="lot2-code" type="text" placeholder="Code" autocomplete="off" aria-label="Code de la cliente">
+            <button type="submit">Débloquer</button>
+          </form>
+          <span id="lot2-erreur" class="lot2-erreur"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="lot2-ouvert" hidden>
+      <article class="mail">
+        <div class="mail-entete">
+          <div><b>De</b><span>Claire Vasseur, directrice du festival Point de rupture</span></div>
+          <div><b>À</b><span>Agence Bascule</span></div>
+          <div><b>Objet</b><span class="mail-objet">Bravo ! Et voici la suite</span></div>
+        </div>
+        <div class="mail-corps">
+          <p>Bonjour,</p>
+          <p>Merci pour ce premier lot : le site est enfin utilisable sur téléphone, et nos partenaires ont adoré. Comme promis, voici ma deuxième série de demandes :</p>
+          <ul>
+            <li>deux liens ne marchent pas : « Voir tout le programme » sur l’accueil, et le bouton « Acheter mon pass » sur la page programme ;</li>
+            <li>dans le footer, je voudrais des icônes, plus modernes que des mots ;</li>
+            <li>sur téléphone, les têtes d’affiche empilées font une page interminable : je préférerais qu’on les fasse défiler, comme dans une appli ;</li>
+            <li>sur nos affiches, le nom de l’artiste est écrit sur sa photo : je veux la même chose sur le site ;</li>
+            <li>Fracas vient chez nous pour la première fois, il faudrait le signaler ;</li>
+            <li>le programme est très long sur téléphone : il faudrait un bouton pour remonter en haut.</li>
+          </ul>
+          <p>Encore merci,</p>
+          <p>Claire Vasseur</p>
+        </div>
+      </article>
+
+      <div class="score" style="margin-top:24px">
+        <span>Points du lot 2 :</span>
+        <strong id="points2">0</strong>
+        <span>sur 14</span>
+        <div class="jauge"><span id="jauge2"></span></div>
+      </div>
+
+      <div class="tickets" id="liste2"></div>
+    </div>
+  </section>
+
+  <!-- 5. CROQUIS -->
+  <section id="croquis">
+    <h2><span class="num">5</span>Les croquis de Kevin</h2>
+    <p>Kevin a dessiné chaque page en version téléphone (375px) et tablette (768px). Il n’a rien dessiné pour le petit portable ni pour le grand écran : pour ces tailles, suis les tickets. Clique sur un croquis pour l’ouvrir en grand.</p>
+    <div class="croquis">
+      <a href="mission/croquis/index-375.svg"><div class="vignette"><img src="mission/croquis/index-375.svg" alt="Croquis de l’accueil sur téléphone"></div><span>Accueil, téléphone</span></a>
+      <a href="mission/croquis/index-768.svg"><div class="vignette"><img src="mission/croquis/index-768.svg" alt="Croquis de l’accueil sur tablette"></div><span>Accueil, tablette</span></a>
+      <a href="mission/croquis/programme-375.svg"><div class="vignette"><img src="mission/croquis/programme-375.svg" alt="Croquis du programme sur téléphone"></div><span>Programme, téléphone</span></a>
+      <a href="mission/croquis/programme-768.svg"><div class="vignette"><img src="mission/croquis/programme-768.svg" alt="Croquis du programme sur tablette"></div><span>Programme, tablette</span></a>
+      <a href="mission/croquis/billetterie-375.svg"><div class="vignette"><img src="mission/croquis/billetterie-375.svg" alt="Croquis de la billetterie sur téléphone"></div><span>Billetterie, téléphone</span></a>
+      <a href="mission/croquis/billetterie-768.svg"><div class="vignette"><img src="mission/croquis/billetterie-768.svg" alt="Croquis de la billetterie sur tablette"></div><span>Billetterie, tablette</span></a>
+    </div>
+  </section>
+
+  <!-- 6. TESTER -->
+  <section id="tester">
+    <h2><span class="num">6</span>Tester son travail</h2>
+    <ol class="etapes">
+      <li><strong>Le testeur.</strong> Ouvre <code>testeur.html</code> (dans le même dossier que cette page). Il affiche une page du site sur plusieurs écrans côte à côte. Après chaque enregistrement de ton CSS, clique sur « Recharger » ou appuie sur R.</li>
+      <li><strong>Le mode appareil.</strong> Ouvre une page du site dans Chrome, puis F12 et Ctrl + Maj + M. C’est le seul moyen de voir le bug du ticket T01 : le testeur ne le montre pas.</li>
+      <li><strong>Le défilement horizontal.</strong> À chaque taille, fais défiler la page jusqu’en bas : si tu peux aussi la faire glisser vers la droite, quelque chose dépasse.</li>
+      <li><strong>Les trois pages.</strong> Le CSS est commun : une règle écrite pour l’accueil peut changer le programme ou la billetterie. Vérifie toujours les trois.</li>
+      <li><strong>Trouver ce qui dépasse.</strong> En mode appareil, si toute la page paraît plus petite que prévu, c’est qu’un élément dépasse à droite : Chrome dézoome pour l’afficher en entier. Pour savoir lequel, ouvre la page du site, puis F12, onglet Console, colle cette ligne et appuie sur Entrée :<br><code>[...document.querySelectorAll("body *")].filter(e => e.getBoundingClientRect().right > document.documentElement.clientWidth).map(e => e.className || e.tagName)</code><br>La console affiche la liste des éléments qui sortent de l’écran.</li>
+    </ol>
+  </section>
+
+</main>
+
+<script>
+const TICKETS = [
+  { id: "T01", pts: 1, niv: "facile", bug: true, page: "Billetterie",
+    titre: "La billetterie est minuscule sur téléphone",
+    texte: `<p>Sur iPhone, toute la page billetterie s’affiche en tout petit, comme une page d’ordinateur réduite (capture IMG_2042). L’accueil et le programme n’ont pas ce problème. Compare le début du HTML de <code>billetterie.html</code> avec celui de <code>index.html</code> : il manque une ligne.</p>`,
+    ou: "le <code>&lt;head&gt;</code> de <code>index.html</code> et de <code>billetterie.html</code>",
+    test: "mode appareil de Chrome (F12, puis Ctrl + Maj + M) à 375px. Ce bug ne se voit <strong>pas</strong> dans le testeur.",
+    valide: "la ligne manquante est dans le <code>&lt;head&gt;</code> de la billetterie, et en mode appareil la page n’est plus affichée comme un site d’ordinateur réduit. Les tarifs restent serrés et le header dépasse : c’est normal, ce sont les tickets T13 et T04." },
+  { id: "T02", pts: 2, niv: "moyen", bug: true, page: "Accueil",
+    titre: "Le titre sort de l’écran sur téléphone",
+    texte: `<p>Kevin a écrit une media query pour passer le titre du héro à 48px sur téléphone, mais elle n’a aucun effet. La règle à l’intérieur est juste : l’erreur est dans la <strong>condition</strong> de la media query.</p>`,
+    ou: "la section 14 (RESPONSIVE), tout en bas de <code>style.css</code>",
+    test: "testeur à 375px, page Accueil.",
+    valide: "à 375px, le titre « Point de rupture » fait 48px et tient dans l’écran." },
+  { id: "T03", pts: 1, niv: "facile", page: "Accueil",
+    titre: "Un héro à la hauteur de l’écran",
+    texte: `<p>Le héro (la grande photo en haut de l’accueil) fait 700px de haut, quel que soit l’écran : beaucoup trop haut sur téléphone. Il doit occuper <strong>85 %</strong> de la hauteur de l’écran, et <strong>75 %</strong> sur téléphone (480px et moins).</p><p>Attention : un pourcentage ne marche pas ici, cherche l’unité qui dépend de la hauteur de l’écran.</p>`,
+    ou: "la section 4 (HÉRO) de <code>style.css</code>, puis ta media query téléphone",
+    test: "testeur à 375px et à 1280px : la photo doit laisser voir le haut de la section suivante.",
+    valide: "la hauteur de <code>.hero</code> n’est plus en px, et elle suit la hauteur de l’écran." },
+  { id: "T04", pts: 2, niv: "moyen", page: "Toutes les pages",
+    titre: "Un header qui tient sur petit écran",
+    texte: `<ul><li>Tablette (768px et moins) : le logo passe au-dessus du menu, et le tout est centré.</li><li>Téléphone (480px et moins) : le bouton jaune « Acheter mon pass » du header disparaît (la barre du ticket T10 le remplacera).</li></ul>`,
+    ou: "la section 3 (HEADER) pour comprendre, puis tes media queries en bas de <code>style.css</code>",
+    test: "testeur à 768px et à 375px, sur les trois pages. Compare avec les croquis.",
+    valide: "à 768px, le logo est au-dessus du menu sur les trois pages. À 375px, le bouton jaune du header a disparu et le header tient dans l’écran." },
+  { id: "T05", pts: 1, niv: "facile", page: "Accueil",
+    titre: "Les chiffres clés sur deux lignes",
+    texte: `<p>Sous 768px, les quatre chiffres de la bande jaune (40 concerts, 3 scènes…) passent à <strong>deux par ligne</strong>.</p>`,
+    ou: "la section 5 (CHIFFRES) de <code>style.css</code>",
+    test: "testeur à 768px et à 375px.",
+    valide: "deux chiffres par ligne à 768px et à 375px, quatre à 1280px." },
+  { id: "T06", pts: 2, niv: "moyen", page: "Accueil",
+    titre: "Les têtes d’affiche",
+    texte: `<ul><li>1024px et moins : <strong>deux</strong> artistes par ligne.</li><li>480px et moins : <strong>un</strong> artiste par ligne.</li></ul><p>Attention à l’ordre de tes media queries : sur un téléphone, les deux conditions sont vraies en même temps.</p>`,
+    ou: "la section 6 (TÊTES D’AFFICHE) de <code>style.css</code>",
+    test: "testeur à 1280px, 1024px, 768px et 375px.",
+    valide: "4 artistes par ligne à 1280px, 2 à 1024px et à 768px, 1 à 375px." },
+  { id: "T07", pts: 2, niv: "moyen", bug: true, page: "Accueil",
+    titre: "L’esprit du festival",
+    texte: `<p>La photo de cette section a une largeur fixe de 560px : elle dépasse de l’écran sur téléphone. Remplace cette largeur par une unité relative.</p><p>Sous 768px, le texte et la photo passent l’un sous l’autre, <strong>la photo en premier</strong>, sans toucher au HTML. Indice : <code>flex-direction</code> accepte aussi la valeur <code>column-reverse</code>, qui empile les éléments dans l’ordre inverse.</p>`,
+    ou: "la section 7 (L’ESPRIT DU FESTIVAL) de <code>style.css</code>",
+    test: "testeur à 1280px, 768px et 375px.",
+    valide: "à 1280px, la photo est toujours à droite du texte. À 768px, elle est au-dessus du texte. Elle ne dépasse jamais de l’écran." },
+  { id: "T08", pts: 1, niv: "facile", page: "Accueil",
+    titre: "Les logos des partenaires",
+    texte: `<p>Sur une seule ligne, les six logos deviennent illisibles. Tablette : <strong>trois</strong> par ligne. Téléphone : <strong>deux</strong> par ligne.</p>`,
+    ou: "la section 8 (PARTENAIRES) de <code>style.css</code>",
+    test: "testeur à 768px et à 375px.",
+    valide: "trois logos par ligne à 768px, deux à 375px, six à 1280px." },
+  { id: "T09", pts: 1, niv: "facile", page: "Toutes les pages",
+    titre: "Le footer",
+    texte: `<p>Sous 768px, les trois colonnes du footer passent l’une sous l’autre, et leur contenu est centré, <strong>logo compris</strong>. Le logo est une image : le centrage du texte ne suffit pas pour lui.</p>`,
+    ou: "la section 9 (FOOTER) de <code>style.css</code>",
+    test: "testeur à 768px, en bas de n’importe quelle page.",
+    valide: "à 768px, les trois colonnes sont les unes sous les autres et tout est centré, y compris le logo." },
+  { id: "T10", pts: 3, niv: "difficile", page: "Toutes les pages",
+    titre: "La barre « Acheter mon pass »",
+    texte: `<p>Elle existe déjà : c’est le lien <code>.barre-mobile</code> tout en bas du HTML de chaque page, caché par Kevin avec <code>display: none</code>.</p><p>Sur téléphone uniquement (480px et moins), elle doit apparaître <strong>collée en bas de l’écran</strong>, sur toute la largeur, et y rester pendant le défilement.</p><p>Attention : quand on arrive tout en bas de la page, elle ne doit pas cacher les derniers liens du footer.</p>`,
+    ou: "la section 10 (BARRE MOBILE) de <code>style.css</code>",
+    test: "testeur à 375px : fais défiler l’écran jusqu’en bas. Puis à 768px.",
+    valide: "à 375px, la barre reste en bas de l’écran pendant tout le défilement, et tout en bas on voit encore les derniers liens du footer au-dessus d’elle. À 768px et plus, elle n’apparaît pas." },
+  { id: "T11", pts: 2, niv: "moyen", page: "Programme",
+    titre: "Ne plus perdre les onglets des jours",
+    texte: `<p>Les onglets Vendredi, Samedi et Dimanche doivent <strong>rester collés en haut de l’écran</strong> pendant qu’on fait défiler le programme, sur toutes les tailles d’écran.</p><p>Pour l’instant, ils défilent avec le reste de la page : dès qu’on descend un peu, on ne les voit plus, et il faut tout remonter pour changer de jour.</p>`,
+    ou: "la section 12 (PROGRAMME) de <code>style.css</code>, règle <code>.jours</code>",
+    test: "testeur, page Programme, à 1280px puis à 375px : fais défiler.",
+    valide: "en faisant défiler jusqu’au dimanche, les onglets restent toujours visibles en haut de l’écran, et les concerts passent dessous, pas par-dessus." },
+  { id: "T12", pts: 2, niv: "moyen", page: "Programme",
+    titre: "Le programme sur petit écran",
+    texte: `<ul><li>768px et moins : la légende des scènes (le bloc à gauche) doit disparaître.</li><li>480px et moins : dans chaque concert, l’heure, le nom, le style et la scène passent les uns sous les autres.</li></ul>`,
+    ou: "la section 12 (PROGRAMME) de <code>style.css</code>",
+    test: "testeur, page Programme, à 768px et à 375px.",
+    valide: "à 768px, la légende a disparu et les concerts tiennent dans l’écran. À 375px, les quatre informations de chaque concert sont les unes sous les autres." },
+  { id: "T13", pts: 3, niv: "difficile", page: "Billetterie",
+    titre: "Les tarifs",
+    texte: `<ul><li><strong>768px et moins</strong> : un seul tarif par ligne, centré dans la page. Chaque tarif prend 60 % de la largeur, et les tarifs sont espacés de 40px.</li><li><strong>480px et moins</strong> : chaque tarif prend toute la largeur.</li></ul>`,
+    test: "testeur, page Billetterie, à 768px et à 375px. Fais d’abord le ticket T01.",
+    valide: "à 768px, un tarif par ligne, centré, sur 60 % de la largeur, avec un espace entre les tarifs. À 375px, les tarifs prennent toute la largeur." },
+  { id: "T14", pts: 1, niv: "facile", page: "Billetterie",
+    titre: "Les questions fréquentes",
+    texte: `<p>Sous 768px, les questions passent sur une seule colonne.</p>`,
+    ou: "la section 13 (BILLETTERIE) de <code>style.css</code>, règle <code>.question</code>",
+    test: "testeur, page Billetterie, à 768px et à 375px.",
+    valide: "une question par ligne à 768px et à 375px, deux à 1280px." },
+  { id: "T15", pts: 2, niv: "moyen", page: "Toutes les pages",
+    titre: "Le grand écran de la directrice",
+    texte: `<p>Sur le grand écran de la directrice, le contenu s’étale sur toute la largeur. À partir de 1440px, il faut <strong>plus de marge à gauche et à droite</strong>, pour que le contenu se resserre vers le centre.</p><p>Kevin a mis une marge de <code>5vw</code> sur les côtés de chaque bloc du site. Sur grand écran, passez-la à <code>12vw</code>, avec <code>padding-left</code> et <code>padding-right</code>.</p><p>Attention, cette media query est la seule qui dit « à partir de 1440px » et non « jusqu’à ».</p>`,
+    ou: "cherchez <code>5vw</code> dans <code>style.css</code> (Ctrl + F) : chaque règle qui le contient est à reprendre",
+    test: "testeur à 1600px, puis à 1280px pour vérifier que rien n’a changé.",
+    valide: "à 1600px, le contenu est plus resserré au centre. À 1280px, les marges sont les mêmes qu’avant." },
+  { id: "T16", pts: 3, niv: "difficile", bonus: true, page: "Toutes les pages",
+    titre: "Le test du petit téléphone",
+    texte: `<p>Teste les trois pages à <strong>320px</strong>, le plus petit écran du cahier des charges, et corrige tout ce qui dépasse. Cette fois, personne ne te dit quoi chercher.</p>`,
+    ou: "à toi de trouver",
+    test: "testeur à 320px, sur les trois pages. La commande de la console (partie 6, étape 5) t’aidera.",
+    valide: "aucun élément ne dépasse à 320px, sur les trois pages." }
+];
+
+const TICKETS2 = [
+  { id: "T17", pts: 1, niv: "facile", bug: true, page: "Accueil et Programme",
+    titre: "Deux liens cassés",
+    texte: `<p>Deux liens ne mènent nulle part : « Voir tout le programme » sur l’accueil, et le bouton « Acheter mon pass » du header sur la page programme. Cette fois, l’erreur est dans le HTML.</p>`,
+    ou: "l’attribut <code>href</code> de ces deux liens",
+    test: "clique sur les deux liens, dans le navigateur.",
+    valide: "les deux liens ouvrent la bonne page." },
+  { id: "T18", pts: 3, niv: "moyen", page: "Toutes les pages",
+    titre: "Les icônes du footer",
+    texte: `<ul><li>Reliez Font Awesome aux trois pages.</li><li>Dans « Suivez-nous », remplacez les mots Instagram, TikTok et YouTube par leurs icônes, côte à côte, en 28px.</li><li>Dans « Infos pratiques », ajoutez une icône jaune devant chaque lien : un repère de carte, un point d’interrogation et une enveloppe.</li></ul><p>Ce ticket demande de modifier le HTML des trois pages. Les liens du footer sont en <code>display: block</code> : pour mettre les icônes côte à côte, regroupez-les dans un <code>div</code> avec une classe.</p>`,
+    ou: "le <code>&lt;head&gt;</code> et le footer des trois pages, puis la section 9 (FOOTER) de <code>style.css</code>",
+    test: "testeur à 1280px et à 375px, en bas des trois pages.",
+    valide: "sur les trois pages, les réseaux sont trois icônes côte à côte (centrées sous 768px), et chaque lien des infos pratiques a son icône jaune." },
+  { id: "T19", pts: 3, niv: "difficile", page: "Accueil",
+       titre: "Un slider pour les têtes d’affiche",
+    texte: `<p>Sur téléphone, les quatre artistes empilés font une page interminable. La cliente veut à la place un <strong>slider</strong> : les artistes sont côte à côte sur une seule ligne, et on les fait défiler <strong>horizontalement</strong>, de gauche à droite, comme dans une appli.</p><p>Choisissez vous-mêmes la largeur des artistes, mais on doit toujours apercevoir le bord de l’artiste suivant : c’est ce qui montre au visiteur qu’il peut faire défiler.</p><p>Seul le slider défile horizontalement</p>`,
+    ou: "votre media query téléphone, règles <code>.artistes</code> et <code>.artiste</code> (c’est la technique de la galerie vue en démonstration)",
+    test: "testeur à 375px : faites défiler le slider avec la souris ou le pavé tactile. Puis à 768px.",
+    valide: "à 375px, les quatre artistes sont sur une seule ligne qui défile horizontalement, on voit le bord de l’artiste suivant, et la page ne bouge pas sur le côté. À 768px, toujours deux artistes par ligne." },
+  { id: "T20", pts: 3, niv: "difficile", page: "Accueil",
+    titre: "Le nom sur la photo",
+    texte: `<p>Sur les affiches du festival, le nom de l’artiste est écrit en bas de sa photo. La cliente veut la même chose sur le site : le nom <strong>par-dessus la photo, en bas à gauche</strong>, et la photo <strong>assombrie</strong> pour qu’on le lise bien. Le style et le jour restent sous la photo.</p><p>Indice : les photos font toutes 320px de haut.</p>`,
+    ou: "la section 6 (TÊTES D’AFFICHE) de <code>style.css</code>",
+    test: "testeur à 1280px et à 375px.",
+    valide: "à toutes les tailles, le nom est lisible en bas à gauche de chaque photo, la photo est plus sombre qu’avant, et le style et le jour sont juste sous la photo." },
+  { id: "T21", pts: 1, niv: "facile", page: "Accueil",
+    titre: "Le badge « Nouveau »",
+    texte: `<p>Fracas joue au festival pour la première fois : ajoutez un petit badge rose « Nouveau » <strong>en haut à droite de sa photo</strong>. Fais d’abord le T20.</p><p>Ce ticket demande d’ajouter une ligne dans le HTML. Si le badge reste caché derrière la photo, écris-le juste après l’image.</p>`,
+    ou: "l’article de Fracas dans <code>index.html</code>, puis la section 6 de <code>style.css</code>",
+    test: "testeur à 1280px et à 375px.",
+    valide: "le badge est en haut à droite de la photo de Fracas, à toutes les tailles." },
+  { id: "T22", pts: 3, niv: "difficile", page: "Programme",
+    titre: "Le bouton « retour en haut »",
+    texte: `<p>Le programme est très long sur téléphone. Ajoutez un bouton rond rose avec une flèche vers le haut (Font Awesome), <strong>toujours visible en bas à droite de l’écran</strong>, qui ramène en haut de la page au clic. Fais d’abord le T18.</p><p>Sur téléphone, il ne doit pas cacher la barre « Acheter mon pass » : placez-le juste au-dessus.</p>`,
+    ou: "<code>programme.html</code>, juste avant la barre mobile, puis une nouvelle section dans <code>style.css</code>",
+    test: "testeur, page Programme, à 1280px puis à 375px : fais défiler, puis clique sur le bouton.",
+    valide: "le bouton reste en bas à droite pendant tout le défilement, il est au-dessus de la barre jaune à 375px, et un clic ramène en haut de la page." }
+];
+
+const CODE_LOT2 = "VENDREDI";
+const CLE_LOT2 = "site-abandonne-lot2";
+
+const CLE = "site-abandonne-tickets";
+let faits = {};
+try { faits = JSON.parse(localStorage.getItem(CLE) || "{}") || {}; } catch (e) {}
+
+function afficher() {
+  remplir(TICKETS, "liste");
+  const lot2 = lot2Ouvert();
+  document.getElementById("lot2-ferme").hidden = lot2;
+  document.getElementById("lot2-ouvert").hidden = !lot2;
+  if (lot2) remplir(TICKETS2, "liste2");
+  const pts = TICKETS.filter((t) => !t.bonus && faits[t.id]).reduce((s, t) => s + t.pts, 0);
+  const bonus = TICKETS.filter((t) => t.bonus && faits[t.id]).reduce((s, t) => s + t.pts, 0);
+  document.getElementById("points").textContent = pts;
+  document.getElementById("jauge").style.width = (pts / 26) * 100 + "%";
+  document.getElementById("bonus").textContent = bonus ? `+ ${bonus} pts de bonus` : "";
+  const pts2 = TICKETS2.filter((t) => faits[t.id]).reduce((s, t) => s + t.pts, 0);
+  document.getElementById("points2").textContent = pts2;
+  document.getElementById("jauge2").style.width = (pts2 / 14) * 100 + "%";
+}
+
+function lot2Ouvert() {
+  try { return localStorage.getItem(CLE_LOT2) === "oui"; } catch (e) { return false; }
+}
+
+document.getElementById("lot2-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const champ = document.getElementById("lot2-code");
+  if (champ.value.trim().toUpperCase() === CODE_LOT2) {
+    try { localStorage.setItem(CLE_LOT2, "oui"); } catch (err) {}
+    afficher();
+    document.getElementById("lot2-ouvert").scrollIntoView({ behavior: "smooth" });
+  } else {
+    document.getElementById("lot2-erreur").textContent = "Ce n’est pas le bon code.";
+  }
+});
+
+function remplir(tickets, idListe) {
+  const liste = document.getElementById(idListe);
+  liste.innerHTML = "";
+  tickets.forEach((t) => {
+    const art = document.createElement("article");
+    art.className = "ticket" + (faits[t.id] ? " termine" : "");
+    art.innerHTML = `
+      <div class="talon"><span class="id">${t.id}</span><span class="pts">${t.pts} pt${t.pts > 1 ? "s" : ""}</span></div>
+      <div class="contenu">
+        <div class="etiquettes">
+          ${t.bonus ? '<span class="etiquette bonus">Bonus</span>' : ""}
+          ${t.bug ? '<span class="etiquette bug">Bug</span>' : ""}
+          <span class="etiquette ${t.niv}">${t.niv[0].toUpperCase() + t.niv.slice(1)}</span>
+          <span class="etiquette">${t.page}</span>
+        </div>
+        <h3>${t.titre}</h3>
+        ${t.texte}
+        <p class="valide"><b>Où chercher :</b> ${t.ou}</p>
+        <p class="valide"><b>Comment tester :</b> ${t.test}</p>
+        <p class="valide"><b>Validé quand :</b> ${t.valide}</p>
+        <label class="fait"><input type="checkbox" ${faits[t.id] ? "checked" : ""}> Ticket terminé</label>
+      </div>`;
+    art.querySelector("input").addEventListener("change", (e) => {
+      faits[t.id] = e.target.checked;
+      try { localStorage.setItem(CLE, JSON.stringify(faits)); } catch (err) {}
+      afficher();
+    });
+    liste.append(art);
+  });
+}
+afficher();
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testeur responsive</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #e9eaf2;
+    color: #1b1e3c;
+    font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .barre {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 22px;
+    padding: 10px 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #d5d7e5;
+  }
+  .barre h1 { margin: 0; font-size: 18px; }
+  .groupe { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .groupe span { font-weight: 700; color: #565a7d; margin-right: 2px; }
+  button {
+    font: inherit;
+    font-weight: 600;
+    padding: 5px 11px;
+    border: 1.5px solid #d5d7e5;
+    border-radius: 99px;
+    background: #f5f6fb;
+    color: #1b1e3c;
+    cursor: pointer;
+  }
+  button[aria-pressed="true"] { background: #1b1e3c; border-color: #1b1e3c; color: #ffffff; }
+  #recharger { background: #ffd23f; border-color: #e6b800; }
+  .note { margin: 0; color: #565a7d; font-size: 13px; }
+  .ecrans {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    overflow: auto;
+  }
+  .ecran { flex: none; }
+  .ecran p { margin: 0 0 6px; font-weight: 700; }
+  .ecran p small { font-weight: 400; color: #565a7d; }
+  .cadre {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 3px solid #1b1e3c;
+    border-radius: 10px;
+  }
+  .cadre iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    transform-origin: 0 0;
+    background: #ffffff;
+  }
+</style>
+</head>
+<body>
+
+<div class="barre">
+  <h1>Testeur responsive</h1>
+  <div class="groupe" id="pages"><span>Page :</span></div>
+  <div class="groupe" id="largeurs"><span>Écrans :</span></div>
+  <button id="recharger" type="button">Recharger (touche R)</button>
+  <p class="note">Enregistre ton CSS puis recharge. Tu peux faire défiler chaque écran. Le testeur ne remplace pas F12 : le bug du ticket T01 ne se voit qu’en mode appareil (Ctrl + Maj + M).</p>
+</div>
+
+<div class="ecrans" id="ecrans"></div>
+
+<script>
+const PAGES = [["Accueil", "index.html"], ["Programme", "programme.html"], ["Billetterie", "billetterie.html"]];
+const LARGEURS = [[320, "Petit téléphone"], [375, "Téléphone"], [768, "Tablette"], [1024, "Petit portable"], [1280, "Ordinateur"], [1600, "Grand écran"]];
+const HAUTEUR = 760;
+let page = "index.html";
+let actives = [375, 768, 1280];
+
+function boutons() {
+  const p = document.getElementById("pages");
+  p.querySelectorAll("button").forEach((b) => b.remove());
+  PAGES.forEach(([nom, fichier]) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = nom;
+    b.setAttribute("aria-pressed", fichier === page);
+    b.onclick = () => { page = fichier; boutons(); dessiner(); };
+    p.append(b);
+  });
+  const l = document.getElementById("largeurs");
+  l.querySelectorAll("button").forEach((b) => b.remove());
+  LARGEURS.forEach(([w]) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = w + "px";
+    b.setAttribute("aria-pressed", actives.includes(w));
+    b.onclick = () => {
+      actives = actives.includes(w) ? actives.filter((x) => x !== w) : [...actives, w].sort((a, c) => a - c);
+      boutons();
+      dessiner();
+    };
+    l.append(b);
+  });
+}
+
+function dessiner() {
+  const zone = document.getElementById("ecrans");
+  zone.innerHTML = "";
+  if (!actives.length) return;
+  const dispo = zone.clientWidth - 32 - 16 * (actives.length - 1) - 6 * actives.length;
+  const total = actives.reduce((s, w) => s + w, 0);
+  const hDispo = zone.clientHeight - 32 - 30;
+  const echelle = Math.min(1, dispo / total, hDispo / HAUTEUR);
+  actives.forEach((w) => {
+    const nom = LARGEURS.find((x) => x[0] === w)[1];
+    const e = document.createElement("div");
+    e.className = "ecran";
+    e.innerHTML = `<p>${nom} <small>${w}px</small></p>`;
+    const cadre = document.createElement("div");
+    cadre.className = "cadre";
+    cadre.style.width = Math.round(w * echelle) + "px";
+    cadre.style.height = Math.round(HAUTEUR * echelle) + "px";
+    const f = document.createElement("iframe");
+    f.title = `${nom}, ${w}px`;
+    f.src = "site/" + page + "?t=" + Date.now();
+    f.style.width = w + "px";
+    f.style.height = HAUTEUR + "px";
+    f.style.transform = `scale(${echelle})`;
+    cadre.append(f);
+    e.append(cadre);
+    zone.append(e);
+  });
+}
+
+document.getElementById("recharger").onclick = dessiner;
+document.addEventListener("keydown", (e) => {
+  if ((e.key === "r" || e.key === "R") && !e.ctrlKey && !e.metaKey) dessiner();
+});
+window.addEventListener("resize", dessiner);
+boutons();
+dessiner();
+</script>
+</body>
+</html>
